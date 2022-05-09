@@ -1,0 +1,107 @@
+.wrapper button, .user-profile-header button, .form label, .form__label input, .form__label textarea {
+  font-weight: 400;
+  font-size: 10px;
+}
+
+.wrapper {
+  width: 515px;
+  padding-top: 13px;
+  padding-left: 36px;
+  padding-right: 41px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.wrapper button {
+  font-size: 12px;
+  color: #FFFFFF;
+  border: none;
+  background: #AFAFAF;
+  border-radius: 5px;
+  padding: 5px 10px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.user-profile-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 11px;
+}
+
+.user-profile-header h2 {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.user-profile-header button {
+  font-size: 12px;
+  color: #FFFFFF;
+  background-color: #4B51EF;
+  border-radius: 5px;
+  border: none;
+  padding: 6px 12px;
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px solid #F3F3F3;
+  border-radius: 8px;
+  padding: 20px 6px 19px 12px;
+  margin-bottom: 15px;
+}
+
+.form label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.form__label input {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.3);
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+  width: 211px;
+  margin-top: 3px;
+}
+
+.form__label textarea {
+  font-size: 11px;
+  resize: none;
+  width: 420px !important;
+  height: 55px;
+  color: rgba(0, 0, 0, 0.3);
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+  margin-top: 3px;
+}
+/*# sourceMappingURL=UserProfile.css.map */

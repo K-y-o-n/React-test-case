@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import valid from "../../validation/validation";
+import "./UserProfile.css"
 
 function UserProfile() {
   const { id } = useParams();
@@ -18,7 +19,20 @@ function UserProfile() {
     website: website,
     comment: ""
   })
+  const submitEl = useRef(null);
+  const inputEl = useRef({
+    name: null,
+    username: null,
+    email: null,
+    street: null,
+    city: null,
+    zipcode: null,
+    phone: null,
+    website: null,
+    comment: null
+  });
   const [readOnly, setReadOnly] = useState(true)
+  const [submitDisabled, setSubmitDisabled] = useState(true)
   const [notValidInput, setNotValidInput] = useState({})
 
   const updateForm = (e) => {
@@ -44,57 +58,70 @@ function UserProfile() {
   }
 
   const changeReadOnly = () => {
-    setReadOnly(!readOnly)
+    if (readOnly === true) {
+      setReadOnly(false);
+      setSubmitDisabled(false);
+      for (let key in inputEl.current) {
+        inputEl.current[key].style.color = "#000000"
+      }
+      submitEl.current.style.background = "#52CF4F";
+    } else {
+      setReadOnly(true);
+      setSubmitDisabled(true);
+      for (let key in inputEl.current) {
+        inputEl.current[key].style.color = "rgba(0, 0, 0, 0.3)"
+      }
+      submitEl.current.style.background = "#AFAFAF";
+    }
   }
 
 
   return (
-    <>
-      <div>
+    <div className="wrapper">
+      <div className="user-profile-header">
         <h2>Профиль пользователя</h2>
         <button onClick={changeReadOnly}>Редактировать</button>
       </div>
-      <form >
-        <label>
+      <form className="form">
+        <label className="form__label">
           Name
-          <input readOnly={readOnly} value={form.name} name="name" onChange={updateForm}></input>
+          <input ref={ref => inputEl.current.name = ref} readOnly={readOnly} value={form.name} name="name" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           User name
-          <input readOnly={readOnly} value={form.username} name="username" onChange={updateForm}></input>
+          <input ref={ref => inputEl.current.username = ref} readOnly={readOnly} value={form.username} name="username" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           E-mail
-          <input readOnly={readOnly} value={form.email} name="email" onChange={updateForm}></input>
+          <input ref={ref => inputEl.current.email = ref} readOnly={readOnly} value={form.email} name="email" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           Street
-          <input readOnly={readOnly} value={form.street} name="street" onChange={updateForm}></input>
+          <input ref={ref => inputEl.current.street = ref} readOnly={readOnly} value={form.street} name="street" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           City
-          <input readOnly={readOnly} value={form.city} name="city" onChange={updateForm}></input>
+          <input ref={ref => inputEl.current.city = ref} readOnly={readOnly} value={form.city} name="city" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           Zip code
-          <input readOnly={readOnly} value={form.zipcode} name="zipcode" onChange={updateForm}></input>
+          <input ref={ref => inputEl.current.zipcode = ref} readOnly={readOnly} value={form.zipcode} name="zipcode" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           Phone
-          <input readOnly={readOnly} value={form.phone} name="phone" onChange={updateForm}></input>
+          <input ref={ref => inputEl.current.phone = ref} readOnly={readOnly} value={form.phone} name="phone" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           Website
-          <input readOnly={readOnly} value={form.website} name="website" onChange={updateForm}></input>
+          <input ref={ref => inputEl.current.website = ref} readOnly={readOnly} value={form.website} name="website" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           Comment
-          <textarea readOnly={readOnly} value={form.comment} name="comment" onChange={updateForm} ></textarea>
+          <textarea ref={ref => inputEl.current.comment = ref} readOnly={readOnly} value={form.comment} name="comment" onChange={updateForm} ></textarea>
         </label>
-        <button type="submit" onClick={submitForm}>Отправить</button>
       </form>
-
-    </>
+      <button disabled={submitDisabled} ref={submitEl} type="submit" onClick={submitForm}>Отправить</button>
+    </div>
   )
 }
 
