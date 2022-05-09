@@ -1,0 +1,37 @@
+.filter h2, .filter button {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.filter {
+  width: 152px;
+  height: 1028px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #BDBDBD;
+  padding-top: 37px;
+  padding-left: 21px;
+}
+
+.filter h2 {
+  color: #000000;
+  margin-bottom: 15px;
+}
+
+.filter button {
+  color: #FFFFFF;
+  background: #4B51EF;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 15px;
+  margin-bottom: 20px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+/*# sourceMappingURL=Filter.css.map */

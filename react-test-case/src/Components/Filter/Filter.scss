@@ -1,0 +1,31 @@
+%filter-font {
+  font-weight: 400;
+  font-size:  12px;
+}
+
+.filter {
+  width: 152px;
+  height: 1028px;
+  display: flex;
+  flex-direction: column;
+  background: #BDBDBD;
+  padding-top: 37px;
+  padding-left: 21px;
+
+    h2 {
+      @extend %filter-font;
+      color: #000000;
+      margin-bottom: 15px;
+    }
+
+    button {
+      @extend %filter-font;
+      color:#FFFFFF;
+      background: #4B51EF;
+      border-radius: 5px;
+      border: none;
+      padding: 5px 15px;
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+}

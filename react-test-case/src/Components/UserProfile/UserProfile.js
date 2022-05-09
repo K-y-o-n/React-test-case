@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useState } from "react";
 import valid from "../../validation/validation";
+import "./UserProfile.css"
 
 function UserProfile() {
   const { id } = useParams();
@@ -49,52 +50,51 @@ function UserProfile() {
 
 
   return (
-    <>
-      <div>
+    <div className="wrapper">
+      <div className="user-profile-header">
         <h2>Профиль пользователя</h2>
         <button onClick={changeReadOnly}>Редактировать</button>
       </div>
-      <form >
-        <label>
+      <form className="form">
+        <label className="form__label">
           Name
           <input readOnly={readOnly} value={form.name} name="name" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           User name
           <input readOnly={readOnly} value={form.username} name="username" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           E-mail
           <input readOnly={readOnly} value={form.email} name="email" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           Street
           <input readOnly={readOnly} value={form.street} name="street" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           City
           <input readOnly={readOnly} value={form.city} name="city" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           Zip code
           <input readOnly={readOnly} value={form.zipcode} name="zipcode" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           Phone
           <input readOnly={readOnly} value={form.phone} name="phone" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           Website
           <input readOnly={readOnly} value={form.website} name="website" onChange={updateForm}></input>
         </label>
-        <label>
+        <label className="form__label">
           Comment
           <textarea readOnly={readOnly} value={form.comment} name="comment" onChange={updateForm} ></textarea>
         </label>
-        <button type="submit" onClick={submitForm}>Отправить</button>
       </form>
-
-    </>
+      <button type="submit" onClick={submitForm}>Отправить</button>
+    </div>
   )
 }
 

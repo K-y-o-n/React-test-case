@@ -1,0 +1,9 @@
+$width: 665px;
+$height: 1028px;
+
+.container {
+  width: $width;
+  height: $height;
+  margin: 0 auto;
+  display: flex;
+}

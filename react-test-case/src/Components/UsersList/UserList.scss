@@ -1,0 +1,61 @@
+%userList-font {
+  font-weight: 400;
+  font-size:  11px;
+}
+
+
+.wrapper {
+  width: 515px;
+  padding-left: 36px;
+  padding-right: 41px;
+  padding-top: 19px;
+}
+
+.userList {
+  display: flex;
+  flex-direction: column;
+
+    h2 {
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 17px;
+    }
+
+    .userList__div {
+      padding: 10px;
+      background-color: #F3F3F3;
+      border-radius: 8px;
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .userList__p {
+      @extend %userList-font;
+      font-size: 12px;
+      align-self: flex-end;
+    }
+}
+
+.userList__div {
+    p {
+      @extend %userList-font;
+        span {
+          color: #A3A3A3;
+          margin-right: 7px;
+        }
+    }
+
+    p:not(:last-of-type) {
+      margin-bottom: 7px;
+    }
+
+    .userList__link {
+      @extend %userList-font;
+      font-size: 12px;
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      text-decoration: none;
+      color: #4B51EF;
+    }
+}
