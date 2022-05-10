@@ -1,12 +1,13 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import { filterByCity } from "../../store/actions/usersListAction";
 import { filterByName } from "../../store/actions/usersListAction";
 import "./Filter.css"
 
 function Filter() {
-  const dispatch = useDispatch();
+  const dispatch:any = useDispatch();
 
-  function handlerByName() {
+  function handlerByName():void {
     dispatch(filterByName())
   }
 

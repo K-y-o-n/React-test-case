@@ -1,3 +1,4 @@
+import React from "react";
 import UsersList from "../UsersList/UsersList";
 import Filter from "../Filter/Filter";
 import "./MainPage.css"
