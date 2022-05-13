@@ -1,19 +1,22 @@
+import React from "react";
 import { getAllUsers } from "../../store/actions/usersListAction";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { shallowEqual, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./UserList.css"
+import { MyDispatch } from "../../store";
+import { UsersListType } from "../../store/actions/usersListAction";
 
 function UsersList() {
-  const dispatch = useDispatch();
+  const dispatch:MyDispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAllUsers())
   }, [])
 
-  const users = useSelector(
-    (state) => state.users,
+  const users:UsersListType = useSelector(
+    (state:any) => state.users,
     shallowEqual
   );
 

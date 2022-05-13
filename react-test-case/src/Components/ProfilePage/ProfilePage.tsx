@@ -1,3 +1,4 @@
+import React from "react"
 import Filter from "../Filter/Filter"
 import UserProfile from "../UserProfile/UserProfile"
 import "../MainPage/MainPage.css"

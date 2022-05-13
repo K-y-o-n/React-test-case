@@ -1,12 +1,15 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useRef, useState } from "react";
 import valid from "../../validation/validation";
 import "./UserProfile.css"
+import { IUser } from "../../store/actions/usersListAction";
+import { Valid } from "../../validation/validation";
 
 function UserProfile() {
   const { id } = useParams();
-  const user = useSelector((state) => state.users.find((el) => el.id === +id))
+  const user:IUser = useSelector((state:any) => state.users.find((el:IUser) => el.id === +id))
   const { name, username, email, address: { street, city, zipcode }, phone, website } = user
   const [form, setForm] = useState({
     name: name,
@@ -19,8 +22,31 @@ function UserProfile() {
     website: website,
     comment: ""
   })
-  const submitEl = useRef(null);
-  const inputEl = useRef({
+
+  const submitEl = useRef<HTMLButtonElement>(null);
+  interface IInputElNull {
+    name: null,
+    username: null,
+    email: null,
+    street: null,
+    city: null,
+    zipcode: null,
+    phone: null,
+    website: null,
+    comment: null
+  }
+  interface IInputElHtml {
+    name: HTMLInputElement,
+    username: HTMLInputElement,
+    email: HTMLInputElement,
+    street: HTMLInputElement,
+    city: HTMLInputElement,
+    zipcode: HTMLInputElement,
+    phone: HTMLInputElement,
+    website: HTMLInputElement,
+    comment: HTMLTextAreaElement
+  }
+  const inputEl = useRef<IInputElNull|IInputElHtml>({
     name: null,
     username: null,
     email: null,
@@ -31,13 +57,15 @@ function UserProfile() {
     website: null,
     comment: null
   });
-  const [readOnly, setReadOnly] = useState(true)
-  const [submitDisabled, setSubmitDisabled] = useState(true)
-  const [notValidInput, setNotValidInput] = useState({})
+  const [readOnly, setReadOnly] = useState<boolean>(true)
+  const [submitDisabled, setSubmitDisabled] = useState<boolean>(true)
+  const [notValidInput, setNotValidInput] = useState<{[key:string]:string}>({})
+ 
+  type UpdateFormParam = React.ChangeEvent<HTMLInputElement>|React.ChangeEvent<HTMLTextAreaElement>;
 
-  const updateForm = (e) => {
+  const updateForm = (e:UpdateFormParam):{}|void => {
     setForm({ ...form, [e.target.name]: e.target.value })
-    if (e.target.name !== "comment" && !(valid[e.target.name].test(e.target.value))) {
+    if (e.target.name !== "comment" && !(valid[e.target.name as keyof Valid].test(e.target.value))) {
       e.target.style.borderColor = "#D91313";
       setNotValidInput({ ...notValidInput, [e.target.name]: "notValid" })
     } else {
@@ -49,29 +77,36 @@ function UserProfile() {
     }
   }
 
-  const submitForm = (e) => {
+  const submitForm = (e:any):void => {
     e.preventDefault();
     if (Object.keys(notValidInput).length !== 0) {
       console.log(`Некорректно заполнены следующие поля: ${Object.keys(notValidInput)}`);
       return;
-    } else console.log(JSON.stringify(form))
+    } else {
+      console.log(JSON.stringify(form))
+      changeReadOnly()
+    }
   }
 
-  const changeReadOnly = () => {
+  const changeReadOnly = ():void => {
     if (readOnly === true) {
       setReadOnly(false);
       setSubmitDisabled(false);
-      for (let key in inputEl.current) {
-        inputEl.current[key].style.color = "#000000"
+      if(inputEl.current && submitEl.current) {
+        for (let key in inputEl.current) {
+          inputEl.current[key as keyof IInputElHtml].style.color = "#000000"
+        }
+        submitEl.current.style.background = "#52CF4F";
       }
-      submitEl.current.style.background = "#52CF4F";
     } else {
       setReadOnly(true);
       setSubmitDisabled(true);
-      for (let key in inputEl.current) {
-        inputEl.current[key].style.color = "rgba(0, 0, 0, 0.3)"
+      if(inputEl.current && submitEl.current){
+        for (let key in inputEl.current) {
+          inputEl.current[key as keyof IInputElHtml].style.color = "rgba(0, 0, 0, 0.3)"
+        }
+        submitEl.current.style.background = "#AFAFAF";
       }
-      submitEl.current.style.background = "#AFAFAF";
     }
   }
 
