@@ -4,8 +4,10 @@ import MainPage from "../MainPage/MainPage";
 import ProfilePage from "../ProfilePage/ProfilePage";
 
 function Router() {
+  const basename:string = document.querySelector('base')?.getAttribute('href') ?? '/'
+
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
         <Route path="/profile/:id" element={<ProfilePage />}></Route>
