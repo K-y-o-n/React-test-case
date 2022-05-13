@@ -22,6 +22,7 @@ function UserProfile() {
     website: website,
     comment: ""
   })
+
   const submitEl = useRef<HTMLButtonElement>(null);
   interface IInputElNull {
     name: null,
@@ -81,7 +82,10 @@ function UserProfile() {
     if (Object.keys(notValidInput).length !== 0) {
       console.log(`Некорректно заполнены следующие поля: ${Object.keys(notValidInput)}`);
       return;
-    } else console.log(JSON.stringify(form))
+    } else {
+      console.log(JSON.stringify(form))
+      changeReadOnly()
+    }
   }
 
   const changeReadOnly = ():void => {
