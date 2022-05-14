@@ -77,7 +77,7 @@ function UserProfile() {
     }
   }
 
-  const submitForm = (e:any):void => {
+  const submitForm = (e:React.MouseEvent<HTMLButtonElement>):void => {
     e.preventDefault();
     if (Object.keys(notValidInput).length !== 0) {
       console.log(`Некорректно заполнены следующие поля: ${Object.keys(notValidInput)}`);
