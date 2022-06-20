@@ -1,5 +1,4 @@
 # React-test-case
-Тестовое задание для соискателя на должность frontend-разработчика
 
 Данные пользователей [https://jsonplaceholder.typicode.com/users](https://jsonplaceholder.typicode.com/users)
 
